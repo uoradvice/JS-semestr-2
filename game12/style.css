@@ -1,67 +1,114 @@
 body {
-        font-family: Arial;
-        text-align: center;
-        background: #e8dccb;
-      }
-      span {
-        font-size: 2rem;
-      }
-      .card-container {
-        margin: 10px 0;
-      }
-      .card {
-        display: inline-block;
-        padding: 10px 15px;
-        margin: 5px;
-        border-radius: 5px;
-        font-weight: bold;
-      }
-      .player1-card {
-        background: #c2a689;
-        color: #3e2c20;
-        border: 1px solid #3e2c20;
-      }
-      .player2-card {
-        background: #a68a64;
-        color: #3e2c20;
-        border: 1px solid #3e2c20;
-      }
-      .choice-buttons input {
-        background-color: #f5e2c8;
-        border-radius: 20px;
-        border: 1px solid #ab9f8c;
-        margin: 5px;
-        padding: 8px 12px;
-      }
-      .choice-buttons input:hover {
-        background-color: #ebd8bf;
-        border: 1px solid #968b7a;
-      }
-      h1 {
-        font-family: "Montserrat", sans-serif;
-        color: #5c4432;
-        font-size: 3em;
-        letter-spacing: 4px;
-      }
-      #Dice {
-        color: #5c4432;
-      }
-      hr {
-        border: none;
-        border-top: 2px solid #ab9f8c;
-      }
-      #go {
-        background-color: #c2a689;
-        width: 70px;
-        height: 43px;
-        border-radius: 20px;
-        border: 2px solid #3e2c20;
-      }
-      #go:hover {
-        background-color: #b1987d;
-      }
-      #message {
-        margin: 5px;
-        font-weight: bold;
-        color: #d1a584;
-      }
+    font-family: Arial;
+    text-align: center;
+    background: #e8dccb;
+}
+
+span {
+    font-size: 2rem;
+}
+
+.setup {
+    margin: 10px 0 6px;
+}
+
+.setup label {
+    font-weight: bold;
+    color: #5c4432;
+    margin-right: 6px;
+}
+
+#playerCount {
+    padding: 7px 10px;
+    border-radius: 14px;
+    border: 1px solid #ab9f8c;
+    background: #f5e2c8;
+    margin-right: 8px;
+}
+
+#start {
+    background-color: #f5e2c8;
+    border-radius: 20px;
+    border: 2px solid #3e2c20;
+    padding: 9px 14px;
+    margin-right: 6px;
+}
+
+#start:hover {
+    background-color: #ebd8bf;
+}
+
+#go {
+    background-color: #c2a689;
+    width: 70px;
+    height: 43px;
+    border-radius: 20px;
+    border: 2px solid #3e2c20;
+}
+
+#go:hover {
+    background-color: #b1987d;
+}
+
+#go:disabled {
+    opacity: 0.6;
+}
+
+.card-container {
+    margin: 10px 0;
+}
+
+.card {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 1px solid #3e2c20;
+    color: #3e2c20;
+}
+
+/* Цвета карточек по игрокам (2–8) */
+.player-card.p1 { background: #c2a689; }
+.player-card.p2 { background: #a68a64; }
+.player-card.p3 { background: #d2b48c; }
+.player-card.p4 { background: #bfa38a; }
+.player-card.p5 { background: #c9a38d; }
+.player-card.p6 { background: #ad8f7a; }
+.player-card.p7 { background: #d0a98f; }
+.player-card.p8 { background: #b08a70; }
+
+.choice-buttons input {
+    background-color: #f5e2c8;
+    border-radius: 20px;
+    border: 1px solid #ab9f8c;
+    margin: 5px;
+    padding: 8px 12px;
+}
+
+.choice-buttons input:hover {
+    background-color: #ebd8bf;
+    border: 1px solid #968b7a;
+}
+
+h1 {
+    font-family: "Montserrat", sans-serif;
+    color: #5c4432;
+    font-size: 3em;
+    letter-spacing: 4px;
+}
+
+#Dice {
+    color: #5c4432;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #ab9f8c;
+}
+
+#message {
+    margin: 5px;
+    font-weight: bold;
+    color: #d1a584;
+}
