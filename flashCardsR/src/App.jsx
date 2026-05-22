@@ -1,5 +1,9 @@
 import React from "react";
 import "./App.css";
+import DeckManager from "./components/DeckManager";
+import CardForm from "./components/CardForm";
+import CardList from "./components/CardList";
+import StudyMode from "./components/StudyMode";
 
 const STORAGE_KEY = "flashcards_app";
 
@@ -29,8 +33,8 @@ export default class App extends React.Component {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state));
   }
 
-  handleChangeDeckName = (e) => {
-    this.setState({ newDeckName: e.target.value });
+  handleDeckNameChange = (newDeckName) => {
+    this.setState({ newDeckName });
   };
 
   handleCreateDeck = () => {
@@ -49,12 +53,12 @@ export default class App extends React.Component {
     }));
   };
 
-  handleSelectDeck = (e) => {
-    this.setState({ currentDeck: e.target.value });
+  handleSelectDeck = (currentDeck) => {
+    this.setState({ currentDeck });
   };
 
-  handleChangeFront = (e) => this.setState({ front: e.target.value });
-  handleChangeBack = (e) => this.setState({ back: e.target.value });
+  handleFrontChange = (front) => this.setState({ front });
+  handleBackChange = (back) => this.setState({ back });
 
   handleAddCard = () => {
     if (!this.state.currentDeck) {
@@ -84,7 +88,7 @@ export default class App extends React.Component {
     }));
   };
 
-  handleDeleteCard = (id) => () => {
+  handleDeleteCard = (id) => {
     this.setState((prev) => ({
       decks: {
         ...prev.decks,
@@ -95,9 +99,7 @@ export default class App extends React.Component {
     }));
   };
 
-  handleToggleLearned = (id) => (e) => {
-    const learned = e.target.checked;
-
+  handleToggleLearned = (id, learned) => {
     this.setState((prev) => ({
       decks: {
         ...prev.decks,
@@ -108,17 +110,17 @@ export default class App extends React.Component {
     }));
   };
 
-  handleEditCard = (card) => () => {
+  handleEditCard = (card) => {
     this.setState({
       front: card.front,
       back: card.back,
     });
 
-    this.handleDeleteCard(card.id)();
+    this.handleDeleteCard(card.id);
   };
 
-  handleToggleOnlyUnlearned = (e) => {
-    this.setState({ onlyUnlearned: e.target.checked });
+  handleToggleOnlyUnlearned = (onlyUnlearned) => {
+    this.setState({ onlyUnlearned });
   };
 
   handleStartStudy = () => {
@@ -171,74 +173,43 @@ export default class App extends React.Component {
   render() {
     const currentCards = this.state.decks[this.state.currentDeck] || [];
 
-    const studyCard =
-      this.state.studyDeck.length > 0
-        ? this.state.isFront
-          ? this.state.studyDeck[this.state.currentIndex].front
-          : this.state.studyDeck[this.state.currentIndex].back
-        : "No cards";
-
     return (
       <div className="App">
         <h1>Flashcards</h1>
-        <input
-          type="text"
-          placeholder="New deck"
-          value={this.state.newDeckName}
-          onChange={this.handleChangeDeckName}
+        <DeckManager
+          newDeckName={this.state.newDeckName}
+          currentDeck={this.state.currentDeck}
+          decks={this.state.decks}
+          onDeckNameChange={this.handleDeckNameChange}
+          onCreateDeck={this.handleCreateDeck}
+          onSelectDeck={this.handleSelectDeck}
         />
-        <button onClick={this.handleCreateDeck}>Create deck</button>
-        <select value={this.state.currentDeck} onChange={this.handleSelectDeck}>
-          <option value="">Select deck</option>
-          {Object.keys(this.state.decks).map((deck) => (
-            <option key={deck} value={deck}>
-              {deck}
-            </option>
-          ))}
-        </select>
-        <hr />
-        <h3>Add Card</h3>
-        <input
-          type="text"
-          placeholder="Front"
-          value={this.state.front}
-          onChange={this.handleChangeFront}
+        <CardForm
+          front={this.state.front}
+          back={this.state.back}
+          hasCurrentDeck={!!this.state.currentDeck}
+          onFrontChange={this.handleFrontChange}
+          onBackChange={this.handleBackChange}
+          onAddCard={this.handleAddCard}
         />
-        <input
-          type="text"
-          placeholder="Back"
-          value={this.state.back}
-          onChange={this.handleChangeBack}
+        <CardList
+          cards={currentCards}
+          onToggleLearned={this.handleToggleLearned}
+          onDeleteCard={this.handleDeleteCard}
+          onEditCard={this.handleEditCard}
         />
-        <button onClick={this.handleAddCard}>Add</button>
-        <hr />
-        <h3>Cards</h3>
-        {currentCards.map((c) => (
-          <div key={c.id}>
-            <b>{c.front}</b> --- {c.back}
-            <input
-              type="checkbox"
-              checked={c.learned}
-              onChange={this.handleToggleLearned(c.id)}
-            />
-            <button onClick={this.handleDeleteCard(c.id)}>Del</button>
-            <button onClick={this.handleEditCard(c)}>Edit</button>
-          </div>
-        ))}
-        <hr />
-        <h2>Study Mode</h2>
-        only unlearned
-        <input
-          type="checkbox"
-          checked={this.state.onlyUnlearned}
-          onChange={this.handleToggleOnlyUnlearned}
+        <StudyMode
+          onlyUnlearned={this.state.onlyUnlearned}
+          studyDeck={this.state.studyDeck}
+          currentIndex={this.state.currentIndex}
+          isFront={this.state.isFront}
+          onToggleOnlyUnlearned={this.handleToggleOnlyUnlearned}
+          onStartStudy={this.handleStartStudy}
+          onFlip={this.handleFlip}
+          onNext={this.handleNext}
+          onPrev={this.handlePrev}
+          onShuffle={this.handleShuffle}
         />
-        <button onClick={this.handleStartStudy}>Start</button>
-        <button onClick={this.handleShuffle}>Shuffle</button>
-        <div style={{ margin: "20px", fontSize: "20px" }}>{studyCard}</div>
-        <button onClick={this.handlePrev}>Prev</button>
-        <button onClick={this.handleFlip}>Flip</button>
-        <button onClick={this.handleNext}>Next</button>
       </div>
     );
   }
