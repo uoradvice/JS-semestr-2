@@ -9,7 +9,6 @@ let cards = [];
 document.querySelector("#start").addEventListener("click", startGame);
 document.querySelector("#go").addEventListener("click", handleGo);
 
-
 function startGame() {
     playersCount = parseInt(document.querySelector("#playerCount").value, 10);
 

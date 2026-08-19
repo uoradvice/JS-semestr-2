@@ -10,6 +10,12 @@
   <body>
     <div id="container">
       <h1>Falshcrads</h1>
+      <div id="deckControls">
+        <input type="text" id="newDeckName" placeholder="New deck name" />
+        <button id="createDeckBtn">Create Deck</button>
+
+        <select id="deckSelect"></select>
+      </div>
       <div id="field">
         <div id="addCard">
           <input type="text" id="front" autocomplete="off" />
@@ -33,19 +39,26 @@
       </div>
     </div>
 
-    <div calss="StudyMode">
-      <input type="button" id="startBtn" value="Start Stady" />
-
+    <div class="studyMode">
       <h2>Study Mode</h2>
 
-      <div id="cardDisplay">
-        start study mode
+      <div class="studySettings">
+        <button id="startBtn">Start</button>
+
+        <label class="checkboxLabel">
+          <input type="checkbox" id="onlyUnlearned" />
+          Only unlearned
+        </label>
+
+        <button id="shuffle">Shuffle</button>
       </div>
 
+      <div id="cardDisplay">Start study mode</div>
+
       <div id="modeControl">
-        <input type="button" value="previous card" id="prev">
-        <input type="button" value="flip card" id="flip">
-        <input type="button" value="next card" id="next">
+        <button id="prev">Previous</button>
+        <button id="flip">Flip</button>
+        <button id="next">Next</button>
       </div>
     </div>
     <script src="main.js"></script>

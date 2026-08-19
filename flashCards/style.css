@@ -1,22 +1,29 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f6f8;
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #f4f6f8;
+  padding: 20px;
+  color: #333;
 }
 
 #container {
-  width: 800px;
-  margin: 40px auto;
-  background: white;
-  padding: 20px 30px;
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  background: #ffffff;
+  padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-h1 {
-  text-align: center;
+h1,
+h2 {
   margin-bottom: 20px;
+  text-align: center;
 }
 
 #addCard {
@@ -27,23 +34,23 @@ h1 {
 
 #addCard input[type="text"] {
   flex: 1;
-  padding: 8px;
-  border-radius: 4px;
+  padding: 8px 10px;
   border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-#addCardButton {
+#addCard input[type="button"] {
   padding: 8px 16px;
   border: none;
-  border-radius: 4px;
-  background-color: #4caf50;
+  background-color: #4a90e2;
   color: white;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: 0.2s;
 }
 
-#addCardButton:hover {
-  background-color: #45a049;
+#addCard input[type="button"]:hover {
+  background-color: #357abd;
 }
 
 table {
@@ -52,21 +59,24 @@ table {
 }
 
 thead {
-  background-color: #f0f0f0;
+  background-color: #f0f2f5;
   font-weight: bold;
 }
 
 td {
   padding: 8px;
-  border-bottom: 1px solid #ddd;
+  border: 1px solid #ddd;
   text-align: center;
+  max-width: 250px;
+  overflow-wrap: break-word;
 }
 
 button {
-  padding: 4px 8px;
+  padding: 5px 10px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .deleteBtn {
@@ -79,15 +89,70 @@ button {
 }
 
 .editBtn {
-  background-color: #3498db;
+  background-color: #f39c12;
   color: white;
 }
 
 .editBtn:hover {
-  background-color: #2980b9;
+  background-color: #d68910;
 }
 
-.learned-row {
-  opacity: 0.5;
-  text-decoration: line-through;
+.studyMode {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.studySettings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.studySettings button {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.studySettings button:hover {
+  background-color: #357abd;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#cardDisplay {
+  min-height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #ccc;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  background-color: #fafafa;
+  word-break: break-all;
+}
+
+#modeControl {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+#modeControl button {
+  background-color: #555;
+  color: white;
+}
+
+#modeControl button:hover {
+  background-color: #333;
 }

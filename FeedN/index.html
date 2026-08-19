@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Лента постов</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Лента постов</h1>
+    <div class="search-wrapper">
+      <input
+        id="search-input"
+        type="text"
+        placeholder="Поиск по постам..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button id="search-clear" class="search-clear" aria-label="Очистить поиск">✕</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="counter"></div>
+
+    <div id="posts-grid"></div>
+
+    <div id="status-area">
+      <!-- Сообщения об ошибке / пустом результате / загрузке -->
+      <button id="load-more-btn" style="display:none">Загрузить ещё</button>
+    </div>
+
+    <!-- Элемент-метка для Intersection Observer -->
+    <div id="sentinel"></div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>

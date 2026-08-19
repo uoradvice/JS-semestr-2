@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Post Feed</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <input 
+      type="text" 
+      id="searchInput" 
+      placeholder="Введите слово для поиска..."
+    />
+
+    <div id="posts"></div>
+
+    <div id="loader" class="hidden">Загрузка...</div>
+    <div id="error" class="hidden error"></div>
+    <div id="empty" class="hidden">Ничего не найдено</div>
+
+    <div id="sentinel"></div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
