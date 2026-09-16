@@ -5,8 +5,6 @@ import CardForm from "./components/CardForm";
 import CardList from "./components/CardList";
 import StudyMode from "./components/StudyMode";
 
-const STORAGE_KEY = "flashcards_app";
-
 export default class App extends React.Component {
   state = {
     decks: {},
@@ -21,17 +19,6 @@ export default class App extends React.Component {
     isFront: true,
     onlyUnlearned: false,
   };
-
-  componentDidMount() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      this.setState(JSON.parse(saved));
-    }
-  }
-
-  componentDidUpdate() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.state));
-  }
 
   handleDeckNameChange = (newDeckName) => {
     this.setState({ newDeckName });
