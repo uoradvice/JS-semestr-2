@@ -1,4 +1,5 @@
-# JavaScript & React Projects
+# JS-semestr-2
+## JavaScript & React Projects
 
 A collection of small projects built with JavaScript and React.  
 This repository is mainly used for practice, experiments, and trying out new ideas.
